@@ -10,10 +10,10 @@ public class Launcher : MonoBehaviour
     private Vector3 forw;
     private bool flag;
 
-/// <summary>
-/// Start is called on the frame when a script is enabled just before
-/// any of the Update methods is called the first time.
-/// </summary>
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
     void Start()
     {
         flag = false;
@@ -22,7 +22,8 @@ public class Launcher : MonoBehaviour
 
     void Update()
     {
-        if(!flag)
+        //nota
+        if (!flag)
         {
             thing.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 0.43f, Camera.main.transform.position.z + 0.6f);
         }
@@ -41,7 +42,7 @@ public class Launcher : MonoBehaviour
             }
         }
 
-        if(flag && thing.transform.position.y < -100)
+        if (flag && thing.transform.position.y < -100)
         {
             flag = false;
         }
