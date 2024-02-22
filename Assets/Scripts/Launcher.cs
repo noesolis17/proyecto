@@ -44,14 +44,15 @@ public class Launcher : MonoBehaviour
         {
             _effect = Instantiate(_effect, thing.transform.position, Quaternion.identity);
             _effect.GetComponent<ParticleSystem>().Play();
+            Ball();
         }
 
-        if (!_effect) if (!_effect.GetComponent<ParticleSystem>().isPlaying) Destroy(_effect);
+        if (_effect) if (!_effect.GetComponent<ParticleSystem>().isPlaying) Destroy(_effect);
 
     }
     void Ball()
     {
-        if (!thing) Destroy(thing);
+        if (thing) Destroy(thing);
         thing = Instantiate(_prefab, _parent.transform);
         thing.transform.position = new Vector3(0, -0.3f, 0.5f);
         thing.GetComponent<Rigidbody>().useGravity = false;

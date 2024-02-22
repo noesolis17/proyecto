@@ -24,8 +24,8 @@ public class BallSystem : MonoBehaviour
     /// touching another rigidbody/collider.
     /// </summary>
     /// <param name="other">The Collision data associated with this collision.</param>
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Floor")) flag = true;
+        flag = true;
     }
 }
