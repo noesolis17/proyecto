@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,25 @@ public class BallSystem : MonoBehaviour
 {
     [SerializeField]
     private GameObject objectSystem;
-    private ParticleSystem particle;
+    public bool flag;
 
     void Start()
-    {        
-        particle = objectSystem.GetComponent<ParticleSystem>();
-        var emission = particle.emission;
-        emission.enabled = true;
+    {
+        flag = false;
     }
 
     void Update()
     {
 
+    }
+
+    /// <summary>
+    /// OnCollisionEnter is called when this collider/rigidbody has begun
+    /// touching another rigidbody/collider.
+    /// </summary>
+    /// <param name="other">The Collision data associated with this collision.</param>
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Floor")) flag = true;
     }
 }

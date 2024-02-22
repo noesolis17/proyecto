@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Launcher : MonoBehaviour
 {
-    public GameObject _prefab;
-    public GameObject _prefabSnow;
+    [SerializeField]
+    private GameObject _prefab, _prefabSnow, _parent, _effect;
     private GameObject thing;
     private Vector3 forw;
     private bool flag;
@@ -16,18 +16,11 @@ public class Launcher : MonoBehaviour
     /// </summary>
     void Start()
     {
-        flag = false;
-        thing = Instantiate(_prefab, Camera.main.transform.position, Quaternion.identity);
+        Ball();
     }
 
     void Update()
     {
-        //nota
-        //Nota 2 Vicky
-        if (!flag)
-        {
-            thing.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 0.43f, Camera.main.transform.position.z + 0.6f);
-        }
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
 #else
@@ -35,31 +28,32 @@ public class Launcher : MonoBehaviour
 #endif
         {
             forw = Camera.main.transform.forward;
-
             if (thing.TryGetComponent(out Rigidbody rb))
             {
-                flag = true;
+                thing.GetComponent<Rigidbody>().useGravity = true;
                 rb.AddForce(forw * 200.0f);
             }
         }
 
-        if (flag && thing.transform.position.y < -100)
+        if (thing.transform.position.y < -100)
         {
-            flag = false;
+            Ball();
         }
 
-    }
+        if (thing.GetComponent<BallSystem>().flag)
+        {
+            _effect = Instantiate(_effect, thing.transform.position, Quaternion.identity);
+            _effect.GetComponent<ParticleSystem>().Play();
+        }
 
-    /// <summary>
-    /// OnCollisionEnter is called when this collider/rigidbody has begun
-    /// touching another rigidbody/collider.
-    /// </summary>
-    /// <param name="other">The Collision data associated with this collision.</param>
-    void OnCollisionEnter(Collision other)
+        if (!_effect) if (!_effect.GetComponent<ParticleSystem>().isPlaying) Destroy(_effect);
+
+    }
+    void Ball()
     {
-        Instantiate(_prefabSnow, thing.transform.position, Camera.main.transform.rotation);
-        Destroy(thing);
-        flag = false;
-        thing = Instantiate(_prefab, Camera.main.transform.position, Quaternion.identity);
+        if (!thing) Destroy(thing);
+        thing = Instantiate(_prefab, _parent.transform);
+        thing.transform.position = new Vector3(0, -0.3f, 0.5f);
+        thing.GetComponent<Rigidbody>().useGravity = false;
     }
 }
