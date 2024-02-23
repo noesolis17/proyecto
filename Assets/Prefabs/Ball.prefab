@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5356404947365113388}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: SnowBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectSystem: {fileID: 7455017151648190636, guid: 28436c05f7413c34c96308bd6fb1f460, type: 3}
+  flag: 0
