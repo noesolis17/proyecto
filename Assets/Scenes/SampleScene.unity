@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 162910348547221752, guid: 378888ce802b6004993a5db857809d39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 162910348547221752, guid: 378888ce802b6004993a5db857809d39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.66
+      objectReference: {fileID: 0}
     - target: {fileID: 416723033798521001, guid: 378888ce802b6004993a5db857809d39, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -189,6 +197,10 @@ PrefabInstance:
     - target: {fileID: 416723033798521002, guid: 378888ce802b6004993a5db857809d39, type: 3}
       propertyPath: m_Name
       value: SnowGirl_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622409452013784782, guid: 378888ce802b6004993a5db857809d39, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 378888ce802b6004993a5db857809d39, type: 3}
